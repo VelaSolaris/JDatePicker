@@ -22,45 +22,45 @@ public interface DateTimeModel<T> extends DateModel<T>, TimeModel<T> {
     /**
      * @param hour between 0 and 23
      */
-    DateTimeModel<T> setHour(int hour);
+    void setHour(int hour);
 
     /**
      * @param minute between 0 and 59
      */
-    DateTimeModel<T> setMinute(int minute);
+    void setMinute(int minute);
 
     /**
      * @param second between 0 and 59
      */
-    DateTimeModel<T> setSecond(int second);
+    void setSecond(int second);
 
     /**
      * @param nanoSecond the nanosecond
      */
-    DateTimeModel<T> setNanoSecond(int nanoSecond);
+    void setNanoSecond(int nanoSecond);
 
     /**
      * Adds the given number of hours.
      * @param numberOfHours the number of hours to add
      */
-    DateTimeModel<T> addHours(int numberOfHours);
+    void addHours(int numberOfHours);
 
     /**
      * Adds the given number of minutes.
      * @param numberOfMinutes the number of minutes to add
      */
-    DateTimeModel<T> addMinutes(int numberOfMinutes);
+    void addMinutes(int numberOfMinutes);
 
     /**
      * Adds the given number of seconds.
      * @param numberOfSeconds the number of seconds to add
      */
-    DateTimeModel<T> addSeconds(int numberOfSeconds);
+    void addSeconds(int numberOfSeconds);
 
     /**
      * Adds the given number of nanoseconds.
      * @param numberOfNanoseconds the number of nanoseconds to add
      */
-    DateTimeModel<T> addNanoSeconds(int numberOfNanoseconds);
+    void addNanoSeconds(int numberOfNanoseconds);
 
 }
