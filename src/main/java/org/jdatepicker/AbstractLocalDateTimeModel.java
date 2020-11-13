@@ -92,8 +92,9 @@ public abstract class AbstractLocalDateTimeModel<T> implements DateTimeModel<T> 
     }
 
     @Override
-    public void setHour(int hour) {
+    public DateTimeModel<T> setHour(int hour) {
         timeModel.setHour(hour);
+        return this;
     }
 
     @Override
@@ -102,8 +103,9 @@ public abstract class AbstractLocalDateTimeModel<T> implements DateTimeModel<T> 
     }
 
     @Override
-    public void setMinute(int minute) {
+    public DateTimeModel<T> setMinute(int minute) {
         timeModel.setMinute(minute);
+        return this;
     }
 
     @Override
@@ -112,8 +114,9 @@ public abstract class AbstractLocalDateTimeModel<T> implements DateTimeModel<T> 
     }
 
     @Override
-    public void setSecond(int second) {
+    public DateTimeModel<T> setSecond(int second) {
         timeModel.setSecond(second);
+        return this;
     }
 
     @Override
@@ -122,45 +125,46 @@ public abstract class AbstractLocalDateTimeModel<T> implements DateTimeModel<T> 
     }
 
     @Override
-    public void setNanoSecond(int nanoSecond) {
+    public DateTimeModel<T> setNanoSecond(int nanoSecond) {
         timeModel.setNanoSecond(nanoSecond);
+        return this;
     }
 
     @Override
-    public void addHours(int numberOfHours) {
+    public DateTimeModel<T> addHours(int numberOfHours) {
         LocalDateTime localDateTime = fromModels();
         if (localDateTime == null) {
-            return;
+            return this;
         }
-        toModels(localDateTime.plusHours(numberOfHours));
+        return toModels(localDateTime.plusHours(numberOfHours));
     }
 
     @Override
-    public void addMinutes(int numberOfMinutes) {
+    public DateTimeModel<T> addMinutes(int numberOfMinutes) {
         LocalDateTime localDateTime = fromModels();
         if (localDateTime == null) {
-            return;
+            return this;
         }
-        toModels(localDateTime.plusMinutes(numberOfMinutes));
+        return toModels(localDateTime.plusMinutes(numberOfMinutes));
     }
 
 
     @Override
-    public void addSeconds(int numberOfSeconds) {
+    public DateTimeModel<T> addSeconds(int numberOfSeconds) {
         LocalDateTime localDateTime = fromModels();
         if (localDateTime == null) {
-            return;
+            return this;
         }
-        toModels(localDateTime.plusSeconds(numberOfSeconds));
+        return toModels(localDateTime.plusSeconds(numberOfSeconds));
     }
 
     @Override
-    public void addNanoSeconds(int numberOfNanoseconds) {
+    public DateTimeModel<T> addNanoSeconds(int numberOfNanoseconds) {
         LocalDateTime localDateTime = fromModels();
         if (localDateTime == null) {
-            return;
+            return this;
         }
-        toModels(localDateTime.plusNanos(numberOfNanoseconds));
+        return toModels(localDateTime.plusNanos(numberOfNanoseconds));
     }
 
     @Override
@@ -251,9 +255,10 @@ public abstract class AbstractLocalDateTimeModel<T> implements DateTimeModel<T> 
 
     protected abstract T fromLocalDateTime(LocalDateTime from);
 
-    private void toModels(LocalDateTime localDateTime) {
+    private AbstractLocalDateTimeModel<T> toModels(LocalDateTime localDateTime) {
         dateModel.setValue(localDateTime.toLocalDate());
         timeModel.setValue(localDateTime.toLocalTime());
+        return this;
     }
 
     private LocalDateTime fromModels() {

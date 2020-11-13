@@ -43,13 +43,14 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
     }
 
     @Override
-    public void setHour(int hour) {
+    public TimeModel<T> setHour(int hour) {
         int oldHour = getHour();
         T oldValue = getValue();
         this.timeValue = this.timeValue.withHour(hour);
         fireChangeEvent();
         firePropertyChange(PROPERTY_HOUR, oldHour, getHour());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
@@ -58,13 +59,14 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
     }
 
     @Override
-    public void setMinute(int minute) {
+    public TimeModel<T> setMinute(int minute) {
         int oldMinute = getMinute();
         T oldValue = getValue();
         this.timeValue = this.timeValue.withMinute(minute);
         fireChangeEvent();
         firePropertyChange(PROPERTY_MINUTE, oldMinute, getMinute());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
@@ -73,13 +75,14 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
     }
 
     @Override
-    public void setSecond(int second) {
+    public TimeModel<T> setSecond(int second) {
         int oldSecond = getSecond();
         T oldValue = getValue();
         this.timeValue = this.timeValue.withSecond(second);
         fireChangeEvent();
         firePropertyChange(PROPERTY_SECOND, oldSecond, getSecond());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
@@ -88,28 +91,29 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
     }
 
     @Override
-    public void setNanoSecond(int nanoSecond) {
+    public TimeModel<T> setNanoSecond(int nanoSecond) {
         int oldNanoSecond = getNanosecond();
         T oldValue = getValue();
         this.timeValue = this.timeValue.withNano(nanoSecond);
         fireChangeEvent();
         firePropertyChange(PROPERTY_NANOSECOND, oldNanoSecond, getNanosecond());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
-    public void addHours(int numberOfHours) {
+    public TimeModel<T> addHours(int numberOfHours) {
         if (numberOfHours == 0) {
-            return;
+            return this;
         }
         int newHour = this.timeValue.plusHours(numberOfHours).getHour();
-        setHour(newHour);
+        return setHour(newHour);
     }
 
     @Override
-    public void addMinutes(int numberOfMinutes) {
+    public TimeModel<T> addMinutes(int numberOfMinutes) {
         if (numberOfMinutes == 0) {
-            return;
+            return this;
         }
         int oldHour = this.timeValue.getHour();
         int oldMinute = this.timeValue.getMinute();
@@ -119,12 +123,13 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
         firePropertyChange(PROPERTY_HOUR, oldHour, getHour());
         firePropertyChange(PROPERTY_MINUTE, oldMinute, getMinute());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
-    public void addSeconds(int numberOfSeconds) {
+    public TimeModel<T> addSeconds(int numberOfSeconds) {
         if (numberOfSeconds == 0) {
-            return;
+            return this;
         }
         int oldHour = this.timeValue.getHour();
         int oldMinute = this.timeValue.getMinute();
@@ -136,12 +141,13 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
         firePropertyChange(PROPERTY_MINUTE, oldMinute, getMinute());
         firePropertyChange(PROPERTY_SECOND, oldSecond, getSecond());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override
-    public void addNanoSeconds(int numberOfNanoseconds) {
+    public TimeModel<T> addNanoSeconds(int numberOfNanoseconds) {
         if (numberOfNanoseconds == 0) {
-            return;
+            return this;
         }
         int oldHour = this.timeValue.getHour();
         int oldMinute = this.timeValue.getMinute();
@@ -155,6 +161,7 @@ public abstract class AbstractLocalTimeModel<T> implements TimeModel<T> {
         firePropertyChange(PROPERTY_SECOND, oldSecond, getSecond());
         firePropertyChange(PROPERTY_NANOSECOND, oldNanoSecond, getNanosecond());
         firePropertyChange(PROPERTY_VALUE, oldValue, getValue());
+        return this;
     }
 
     @Override

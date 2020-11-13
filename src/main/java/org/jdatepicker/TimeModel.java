@@ -24,7 +24,7 @@ public abstract interface TimeModel<T> extends Model<T> {
     /**
      * @param hour between 0 and 23
      */
-    void setHour(int hour);
+    TimeModel<T> setHour(int hour);
 
     /**
      * @return the minute (between 0 and 59)
@@ -34,7 +34,7 @@ public abstract interface TimeModel<T> extends Model<T> {
     /**
      * @param minute between 0 and 59
      */
-    void setMinute(int minute);
+    TimeModel<T> setMinute(int minute);
 
     /**
      * @return the second (between 0 and 59)
@@ -44,7 +44,7 @@ public abstract interface TimeModel<T> extends Model<T> {
     /**
      * @param second between 0 and 59
      */
-    void setSecond(int second);
+    TimeModel<T> setSecond(int second);
 
     /**
      * @return the nanosecond
@@ -54,31 +54,31 @@ public abstract interface TimeModel<T> extends Model<T> {
     /**
      * @param nanoSecond the nanosecond
      */
-    void setNanoSecond(int nanoSecond);
+    TimeModel<T> setNanoSecond(int nanoSecond);
 
     /**
      * Adds the given number of hours.
      * @param numberOfHours the number of hours to add
      */
-    void addHours(int numberOfHours);
+    TimeModel<T> addHours(int numberOfHours);
 
     /**
      * Adds the given number of minutes.
      * @param numberOfMinutes the number of minutes to add
      */
-    void addMinutes(int numberOfMinutes);
+    TimeModel<T> addMinutes(int numberOfMinutes);
 
     /**
      * Adds the given number of seconds.
      * @param numberOfSeconds the number of seconds to add
      */
-    void addSeconds(int numberOfSeconds);
+    TimeModel<T> addSeconds(int numberOfSeconds);
 
     /**
      * Adds the given number of nanoseconds.
      * @param numberOfNanoseconds the number of nanoseconds to add
      */
-    void addNanoSeconds(int numberOfNanoseconds);
+    TimeModel<T> addNanoSeconds(int numberOfNanoseconds);
 
     /**
      * Adds the given number of hours.
